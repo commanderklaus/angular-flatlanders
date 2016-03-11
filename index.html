@@ -13,44 +13,15 @@
     <div class="list-group">
       <!--  Product Container  -->
       <div class="list-group-item" ng-repeat="product in store.products">
-        <h3>{{ product.name }}
-        <em class="pull-right">{{ product.price | currency }}</em>
-        <img ng-src="{{ product.images[0].full }}" />
-        </h3>
+        <product-title></product-title>
         <button ng-show="store.product.canPurchase">Add to Cart</button>
-        <section ng-controller="PanelController as panel">
-          <ul class="nav nav-pills">
-            <li ng-class="{ active: panel.isSelected(1) }">
-              <a href ng-click="panel.selectTab(1)">Description</a>
-            </li>
-            <li ng-class="{ active: panel.isSelected(2) }">
-              <a href ng-click="panel.selectTab(2)">Specifications</a>
-            </li>
-            <li ng-class="{ active: panel.isSelected(3) }">
-              <a href ng-click="panel.selectTab(3)">Reviews</a>
-            </li>
-          </ul>
-          <div class="panel" ng-show="panel.isSelected(1)">
-            <h4>Description</h4>
-            <p>{{ product.description }}</p>
-          </div>
-          <div class="panel" ng-show="panel.isSelected(2)">
-            <h4>Specifications</h4>
-            <blockquote>None yet</blockquote>
-          </div>
-          <div class="panel" ng-show="panel.isSelected(3)">
-            <h4>Reviews</h4>
-            <blockquote ng-repeat="review in product.reviews">
-              <b>Stars: {{ review.stars }}</b>
-              {{ review.body }}
-              <cite>by: {{ review.author }}</b>
-            </blockquote>
-          </div>
-        </section>
+        <product-panels><product-panels>
       </div>
     </div>
 
+    <!-- Script includes below -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
     <script src="app.js"></script>
+    <script src="products.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 (function () {
-	var app = angular.module('store', []);
+	var app = angular.module('store', ['store-products']);
 
 	var gems = [
 		{
@@ -38,16 +38,14 @@
 		this.products = gems;
 	});
 
-	app.controller('PanelController', function () {
-		this.tab = 1;
+	app.controller('ReviewController', function () {
+		this.review = {};
 
-		this.selectTab = function (setTab) {
-			this.tab = setTab;
-		}
-
-		this.isSelected = function (checkTab) {
-			return this.tab === checkTab;
+		this.addReview = function (product) {
+			product.reviews.push(this.review);
+			this.review = {};
 		}
 	});
+
 
 })();
